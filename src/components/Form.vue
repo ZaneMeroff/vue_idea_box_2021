@@ -1,8 +1,8 @@
 <template>
   <form class="form-outer-container">
 
-    <input v-model="title" @change="validateInputs" class="form-item" placeholder="title"/>
-    <input v-model="description" @change="validateInputs" class="form-item"placeholder="description"/>
+    <input v-model="title" type="text" @change="validateInputs" class="form-item" placeholder="title"/>
+    <input v-model="description" type="text" @change="validateInputs" class="form-item"placeholder="description"/>
     <button :disabled="saveDisabled" @click="handleSaveClick" class="form-item">save</button>
 
   </form>
@@ -37,6 +37,7 @@
 
       handleSaveClick(e) {
         e.preventDefault()
+        this.$emit("addIdea", { title: this.title, description: this.description })
         this.clearForm()
       },
     },
