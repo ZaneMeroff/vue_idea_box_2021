@@ -3,20 +3,31 @@
 
     <div class="main-app-container">
       <h1>iDeA bOx 💭</h1>
+
+      <Form />
+      <IdeasContainer />
+
     </div>
 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Form from './components/Form.vue'
+  import IdeasContainer from './components/IdeasContainer.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: "App",
+    components: {
+      Form,
+      IdeasContainer,
+    },
+    data() {
+      return {
+        ideas: [],
+      }
+    },
   }
-}
 </script>
 
 <style>
@@ -34,7 +45,9 @@ export default {
     border: 1px solid #000;
     height: 500px;
     width: 700px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
 </style>
