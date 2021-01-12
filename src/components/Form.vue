@@ -1,8 +1,8 @@
 <template>
   <form class="form-outer-container">
 
-    <input v-model="title" type="text" @change="validateInputs" class="form-item" placeholder="title"/>
-    <input v-model="description" type="text" @change="validateInputs" class="form-item"placeholder="description"/>
+    <input v-model="title" type="text" class="form-item" placeholder="title"/>
+    <input v-model="description" type="text" class="form-item"placeholder="description"/>
     <button :disabled="saveDisabled" @click="handleSaveClick" class="form-item">save</button>
 
   </form>
@@ -22,7 +22,6 @@
     methods: {
 
       validateInputs() {
-        console.log("test");
         if (this.title && this.description) {
           this.saveDisabled = false
         } else {
@@ -41,8 +40,9 @@
         this.clearForm()
       },
     },
-    mounted() {
-
+    watch: {
+      title() { this.validateInputs() },
+      description() { this.validateInputs() },
     },
   }
 </script>
@@ -59,6 +59,10 @@
   .form-item {
     width: 200px;
     margin: 10px;
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 
 </style>
