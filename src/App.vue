@@ -3,15 +3,8 @@
 
     <div class="main-app-container">
       <h1>iDeA bOx 💭</h1>
-
-      <Form
-        @addIdea="createIdea"
-      />
-      <IdeasContainer
-        :ideas="ideas"
-        @delete="deleteIdea"
-      />
-
+      <Form @addIdea="createIdea"/>
+      <IdeasContainer :ideas="ideas" @delete="deleteIdea"/>
     </div>
 
   </div>
