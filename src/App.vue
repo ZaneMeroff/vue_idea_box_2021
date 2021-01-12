@@ -4,8 +4,13 @@
     <div class="main-app-container">
       <h1>iDeA bOx 💭</h1>
 
-      <Form />
-      <IdeasContainer />
+      <Form
+        @addIdea="createIdea"
+      />
+      <IdeasContainer
+        :ideas="ideas"
+        @delete="deleteIdea"
+      />
 
     </div>
 
@@ -24,8 +29,26 @@
     },
     data() {
       return {
-        ideas: [],
+        ideas: [
+          { id: 1, title: "Birds", description: "Falcon, Hawk, Eagle" },
+          { id: 2, title: "Dogs", description: "Poodle, Retriever, Pug" },
+          { id: 3, title: "Whiskey", description: "Beam, Jack, Henry" },
+        ],
       }
+    },
+    methods: {
+
+      createIdea(idea) {
+        this.ideas.push({
+          id: this.ideas.length+1,
+          title: idea.title,
+          description: idea.description,
+        })
+      },
+
+      deleteIdea(id) {
+        this.ideas = this.ideas.filter(idea => idea.id !== id)
+      },
     },
   }
 </script>
