@@ -9,6 +9,8 @@
       @delete="handleDelete"
     />
 
+    <p v-if="!ideas.length" class="no-idea-msg">you must not have any ideas at this time...</p>
+
   </div>
 </template>
 
@@ -22,19 +24,11 @@
     props: {
       ideas: { type: Array, default: ()=> [] },
     },
-    data() {
-      return {
-
-      }
-    },
     methods: {
 
       handleDelete(id) {
         this.$emit("delete", id)
       },
-    },
-    mounted() {
-
     },
   }
 </script>
@@ -44,7 +38,15 @@
   .ideas-outer-container {
     height: 100%;
     width: 100%;
-    text-align: center;
+    background-color: #ebeeee;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    
+  }
+
+  .no-idea-msg {
+    margin: 100px 0px 0px 214px;
   }
 
 </style>
