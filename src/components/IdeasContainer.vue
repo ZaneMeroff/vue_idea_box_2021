@@ -1,13 +1,27 @@
 <template>
-  <form class="ideas-outer-container">
+  <div class="ideas-outer-container">
 
-  </form>
+    <Idea
+      v-for="idea in ideas"
+      :id="idea.id"
+      :title="idea.title"
+      :description="idea.description"
+      @delete="handleDelete"
+    />
+
+  </div>
 </template>
 
 <script>
+  import Idea from "./Idea.vue"
   export default {
     name: "IdeasContainer",
-    props: [],
+    components: {
+      Idea,
+    },
+    props: {
+      ideas: { type: Array, default: ()=> [] },
+    },
     data() {
       return {
 
@@ -15,6 +29,9 @@
     },
     methods: {
 
+      handleDelete(id) {
+        this.$emit("delete", id)
+      },
     },
     mounted() {
 
@@ -25,7 +42,6 @@
 <style scoped>
 
   .ideas-outer-container {
-    border: 2px solid blue;
     height: 100%;
     width: 100%;
     text-align: center;
